@@ -20,7 +20,7 @@ GUESS=1
 echo "Guess the secret number between 1 and 1000:"
 while read NUM
   do
-    if [[ ! $NUM =~^[0-9]+$  ]]
+    if [[ ! $NUM =~ ^[0-9]+$ ]]
       then 
         echo "That is not an integer, guess again:"
         else
@@ -32,9 +32,17 @@ while read NUM
                 then
                   echo "It's lower than that, guess again:"
                   elif [[ $NUM -lt $RANDO_NUM ]]
+                  then
                     echo "It's higher than that, guess again:"
                fi 
           fi
     fi
   GUESS=$(($GUESS + 1))
 done
+
+if [[ $GUESS == 1 ]]
+  then
+    echo "You guessed it in $GUESS tries. The secret number was $RANDO_NUM. Nice job!"
+  else
+    echo "You guessed it in $GUESS tries. The secret number was $RANDO_NUM. Nice job!"
+fi
